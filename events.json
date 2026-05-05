@@ -1,0 +1,95 @@
+{
+  "events": [
+    {
+      "id": "wuwa_event_20260430",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "Ver3.3 第三章・幕間「鈴の音に祈って」",
+      "category": "イベント",
+      "startDate": "2026-04-30",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・期間: 2026/04/30〜2026/05/21\n・内容: 第三章・幕間「鈴の音に祈って」と「第三章第五幕「昨夜を照らす星々」」が追加",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_event_20260521",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "Ver3.3 第三章・幕間「溶けゆく夜空の下で」",
+      "category": "イベント",
+      "startDate": "2026-05-21",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・期間: 2026/05/21〜\n・内容: 第三章・幕間「溶けゆく夜空の下で」が追加",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_gacha_20260430",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "Ver3.3 緋雪、モーニエ、ユーノ",
+      "category": "ガチャ",
+      "startDate": "2026-04-30",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・期間: 2026/04/30〜2026/05/21\n・内容: 緋雪、モーニエ、ユーノのガチャが追加",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_gacha_20260521",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "Ver3.3 ダーニャ、千咲、フローヴァ",
+      "category": "ガチャ",
+      "startDate": "2026-05-21",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・期間: 2026/05/21〜\n・内容: ダーニャ、千咲、フローヴァのガチャが追加",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_update_20260430",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "Ver3.3 鳴潮 (Wuthering Waves) アプデ",
+      "category": "アプデ",
+      "startDate": "2026-04-30",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・内容: 20連分の限定ガチャ石が配付",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_event_20260420",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "鳴潮 (Wuthering Waves) コード",
+      "category": "コード",
+      "startDate": "2026-04-20",
+      "endDate": "",
+      "rewards": "",
+      "todo": "",
+      "description": "・コード配布：FACEALEPH1、2NDANNIVERSARY、EVERSHINE",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    },
+    {
+      "id": "wuwa_event_20260422",
+      "game": "鳴潮 (Wuthering Waves)",
+      "title": "響き渡る音弦",
+      "category": "イベント",
+      "startDate": "2026-04-22T05:00:00",
+      "endDate": "2026-04-22T04:59:00",
+      "rewards": "",
+      "todo": "",
+      "description": "・音骸素材 期間限定2倍イベント\n・開催期間：2026年4月22日05:00 ~ 2026年4月29日04:59\n・開放条件：ユニオンレベル≧19",
+      "url": "https://twitter.com/WutheringW_GW/status/2045097514391769293",
+      "banner": false
+    }
+  ]
+}
