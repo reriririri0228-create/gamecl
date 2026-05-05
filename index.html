@@ -944,6 +944,56 @@ body.edit-mode .widget-mgr-panel.open { display:block; }
   transform:translateY(20px); opacity:0; transition:all 0.3s;
 }
 .toast.show { transform:translateY(0); opacity:1; }
+.toast.error { background:rgba(255,59,92,0.12); border-color:rgba(255,59,92,0.4); color:var(--accent-red); }
+
+/* ===== MODAL EDIT FORM ===== */
+.modal-edit-form { display:none; margin-top:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px; }
+.modal-edit-form.open { display:block; }
+.modal-edit-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+.modal-edit-field { display:flex; flex-direction:column; gap:4px; }
+.modal-edit-full { display:flex; flex-direction:column; gap:4px; margin-bottom:8px; }
+.modal-edit-label { font-size:9px; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; }
+.modal-edit-input, .modal-edit-select, .modal-edit-textarea {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(0,245,255,0.2);
+  border-radius:6px; color:var(--text-primary); padding:7px 10px;
+  font-size:12px; font-family:'Noto Sans JP',sans-serif; outline:none;
+  transition:border-color 0.2s; width:100%;
+}
+.modal-edit-input:focus,.modal-edit-select:focus,.modal-edit-textarea:focus { border-color:var(--accent-cyan); }
+.modal-edit-input.error,.modal-edit-select.error { border-color:var(--accent-red); }
+.modal-edit-textarea { resize:vertical; min-height:60px; }
+.modal-edit-actions { display:flex; gap:8px; margin-top:10px; }
+.btn-edit { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:7px 14px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; letter-spacing:1px; transition:all 0.2s; }
+.btn-edit:hover { background:rgba(0,245,255,0.08); border-color:rgba(0,245,255,0.3); color:var(--accent-cyan); }
+.btn-save { background:rgba(0,245,255,0.12); border:1px solid var(--accent-cyan); color:var(--accent-cyan); padding:7px 18px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; letter-spacing:1px; transition:all 0.2s; }
+.btn-save:hover { background:rgba(0,245,255,0.22); box-shadow:var(--glow-cyan); }
+.btn-cancel-edit { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:7px 14px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; letter-spacing:1px; transition:all 0.2s; }
+.btn-cancel-edit:hover { background:rgba(255,255,255,0.08); color:var(--text-secondary); }
+
+/* ===== REMIND PICKER ===== */
+.remind-wrap { position:relative; }
+.btn-remind { background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.2); color:rgba(255,215,0,0.7); padding:7px 12px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; letter-spacing:1px; transition:all 0.2s; }
+.btn-remind:hover { background:rgba(255,215,0,0.12); border-color:rgba(255,215,0,0.4); color:var(--accent-gold); }
+.remind-picker { display:none; position:absolute; bottom:calc(100% + 8px); right:0; background:rgba(8,8,18,0.97); border:1px solid rgba(0,245,255,0.18); border-radius:10px; padding:10px; z-index:400; min-width:150px; backdrop-filter:blur(20px); }
+.remind-picker.open { display:block; }
+.remind-picker-title { font-size:9px; letter-spacing:2px; color:var(--text-muted); margin-bottom:8px; }
+.remind-option { padding:7px 12px; cursor:pointer; font-size:11px; border-radius:6px; color:var(--text-secondary); transition:all 0.15s; }
+.remind-option:hover { background:rgba(0,245,255,0.08); color:var(--accent-cyan); }
+
+/* ===== WEBCAL POPUP ===== */
+.webcal-wrap { position:relative; }
+.btn-webcal { background:rgba(0,255,140,0.08); border:1px solid rgba(0,255,140,0.25); color:rgba(0,255,140,0.8); padding:7px 13px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; letter-spacing:1px; transition:all 0.2s; }
+.btn-webcal:hover { background:rgba(0,255,140,0.15); border-color:var(--accent-green); color:var(--accent-green); }
+.webcal-popup { display:none; position:absolute; top:calc(100% + 8px); right:0; background:rgba(8,8,18,0.97); border:1px solid rgba(0,245,255,0.18); border-radius:12px; padding:14px; z-index:400; width:320px; backdrop-filter:blur(20px); }
+.webcal-popup.open { display:block; }
+.webcal-popup-title { font-size:9px; letter-spacing:2px; color:var(--text-muted); margin-bottom:10px; }
+.webcal-url-box { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:8px 10px; font-size:10px; color:var(--accent-cyan); word-break:break-all; margin-bottom:10px; cursor:pointer; transition:background 0.2s; }
+.webcal-url-box:hover { background:rgba(0,245,255,0.06); }
+.webcal-actions { display:flex; gap:6px; }
+.btn-gcal-reg { flex:1; background:rgba(66,133,244,0.12); border:1px solid rgba(66,133,244,0.3); color:rgba(66,133,244,0.9); padding:8px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; text-align:center; text-decoration:none; transition:all 0.2s; display:block; }
+.btn-gcal-reg:hover { background:rgba(66,133,244,0.2); border-color:rgba(66,133,244,0.5); }
+.webcal-copy-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:8px 12px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; transition:all 0.2s; }
+.webcal-copy-btn:hover { background:rgba(255,255,255,0.1); color:var(--text-secondary); }
 
 @media (max-width:860px) {
   .zone-side { width:240px; }
@@ -975,6 +1025,17 @@ body.edit-mode .widget-mgr-panel.open { display:block; }
     </div>
     <div class="header-nav">
       <button class="edit-mode-btn" id="editModeBtn" onclick="toggleEditMode()">✏ EDIT</button>
+      <div class="webcal-wrap">
+        <button class="btn-webcal" id="webcalBtn">📅 カレンダー登録</button>
+        <div class="webcal-popup" id="webcalPopup">
+          <div class="webcal-popup-title">▶ 現在のフィルターで登録</div>
+          <div class="webcal-url-box" id="webcalUrlBox" title="クリックでコピー"></div>
+          <div class="webcal-actions">
+            <a class="btn-gcal-reg" id="webcalGcalLink" href="#" target="_blank">Googleカレンダーに追加</a>
+            <button class="webcal-copy-btn" id="webcalCopyBtn">コピー</button>
+          </div>
+        </div>
+      </div>
       <input type="search" class="search-input" id="searchInput" placeholder="SEARCH...">
       <div class="view-tabs">
         <button class="view-tab" id="tabToday">今日</button>
@@ -1143,7 +1204,61 @@ body.edit-mode .widget-mgr-panel.open { display:block; }
     <div class="modal-actions">
       <a href="#" id="modalLink" class="btn-primary" target="_blank">▶ 公式 / Game8</a>
       <a href="#" id="modalGcal" class="btn-gcal" target="_blank">+ G.CAL</a>
+      <button class="btn-edit" id="modalEdit">✏ EDIT</button>
+      <div class="remind-wrap">
+        <button class="btn-remind" id="modalRemind">🔔</button>
+        <div class="remind-picker" id="remindPicker">
+          <div class="remind-picker-title">通知タイミング</div>
+          <div class="remind-option" data-days="0">当日</div>
+          <div class="remind-option" data-days="1">1日前</div>
+          <div class="remind-option" data-days="3">3日前</div>
+          <div class="remind-option" data-days="7">7日前</div>
+        </div>
+      </div>
       <button class="btn-danger" id="modalDelete">削除</button>
+    </div>
+    <div class="modal-edit-form" id="modalEditForm">
+      <div class="modal-edit-grid">
+        <div class="modal-edit-field">
+          <div class="modal-edit-label">タイトル</div>
+          <input type="text" class="modal-edit-input" id="editTitle">
+        </div>
+        <div class="modal-edit-field">
+          <div class="modal-edit-label">カテゴリ</div>
+          <select class="modal-edit-select" id="editCategory">
+            <option value="イベント">EVENT</option>
+            <option value="メンテ">MAINT</option>
+            <option value="アプデ">UPDATE</option>
+            <option value="ガチャ">GACHA</option>
+            <option value="レイド">RAID</option>
+            <option value="コラボ">COLLAB</option>
+          </select>
+        </div>
+        <div class="modal-edit-field">
+          <div class="modal-edit-label">開始日</div>
+          <input type="date" class="modal-edit-input" id="editStart">
+        </div>
+        <div class="modal-edit-field">
+          <div class="modal-edit-label">終了日</div>
+          <input type="date" class="modal-edit-input" id="editEnd">
+        </div>
+      </div>
+      <div class="modal-edit-full">
+        <div class="modal-edit-label">報酬</div>
+        <input type="text" class="modal-edit-input" id="editRewards">
+      </div>
+      <div class="modal-edit-full">
+        <div class="modal-edit-label">説明</div>
+        <textarea class="modal-edit-textarea" id="editDesc" rows="3"></textarea>
+      </div>
+      <div class="modal-edit-full">
+        <div class="modal-edit-label">URL</div>
+        <input type="url" class="modal-edit-input" id="editUrl">
+      </div>
+      <div class="modal-edit-actions">
+        <button class="btn-save" id="editSave">保存</button>
+        <button class="btn-cancel-edit" id="editCancel">キャンセル</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1286,8 +1401,10 @@ let currentModalEventId = null;
 // ==============================
 // LOCAL STORAGE
 // ==============================
-const LS_EVENTS  = 'gamecal_local_events';
-const LS_DELETED = 'gamecal_deleted_ids';
+const LS_EVENTS    = 'gamecal_local_events';
+const LS_DELETED   = 'gamecal_deleted_ids';
+const LS_SETTINGS  = 'gamecal_settings';
+const LS_REMINDERS = 'gamecal_reminders';
 
 let localEvents = [];
 let deletedIds  = new Set();
@@ -1304,6 +1421,40 @@ function loadLocalData() {
 function saveLocalData() {
   localStorage.setItem(LS_EVENTS,  JSON.stringify(localEvents));
   localStorage.setItem(LS_DELETED, JSON.stringify([...deletedIds]));
+}
+
+function saveSettings() {
+  localStorage.setItem(LS_SETTINGS, JSON.stringify({
+    activeGame,
+    viewMode,
+    activeCategories: [...activeCategories],
+  }));
+}
+
+function loadSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem(LS_SETTINGS));
+    if (!s) return;
+    if (typeof s.activeGame === 'string') activeGame = s.activeGame;
+    if (['today','month','list'].includes(s.viewMode)) viewMode = s.viewMode;
+    if (Array.isArray(s.activeCategories)) activeCategories = new Set(s.activeCategories);
+  } catch(e) {}
+}
+
+function applySettingsToDOM() {
+  document.querySelectorAll('.cat-toggle').forEach(btn => {
+    btn.classList.toggle('on', activeCategories.has(btn.dataset.cat));
+  });
+  const tabMap = { today:'tabToday', month:'tabMonth', list:'tabList' };
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+  const tabEl = document.getElementById(tabMap[viewMode] || 'tabMonth');
+  if (tabEl) tabEl.classList.add('active');
+  const cal = document.getElementById('calSection');
+  const tod = document.getElementById('todaySection');
+  const lst = document.getElementById('listSection');
+  if (cal) cal.style.display = viewMode === 'month' ? '' : 'none';
+  if (tod) tod.classList.toggle('active', viewMode === 'today');
+  if (lst) lst.classList.toggle('active', viewMode === 'list');
 }
 
 function getEffectiveEvents() {
@@ -1323,13 +1474,24 @@ function deleteEvent(id) {
 }
 
 function addLocalEvent(ev) {
+  if (!validateDate(ev.startDate)) { showToast('開始日が無効です: ' + ev.startDate, 'error'); return false; }
+  if (ev.endDate && !validateDate(ev.endDate)) { showToast('終了日が無効です: ' + ev.endDate, 'error'); return false; }
   if (!ev.id) ev.id = 'local_' + Date.now() + '_' + Math.random().toString(36).slice(2);
   localEvents.push(ev);
   saveLocalData();
+  return true;
 }
 
 function toDateInputVal(date) {
   return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+}
+
+function validateDate(str) {
+  if (!str) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(str)) return false;
+  const [y, m, d] = str.split('-').map(Number);
+  if (m < 1 || m > 12) return false;
+  return d >= 1 && d <= new Date(y, m, 0).getDate();
 }
 
 // ==============================
@@ -1466,6 +1628,7 @@ function buildGamePills() {
 
     btn.addEventListener('click', () => {
       activeGame = g;
+      saveSettings();
       container.querySelectorAll('.game-pill').forEach(el => {
         el.classList.remove('active');
         el.style.removeProperty('background');
@@ -2022,7 +2185,7 @@ document.getElementById('qaSave').addEventListener('click', () => {
     url:         null,
     banner:      false,
   };
-  addLocalEvent(ev);
+  if (!addLocalEvent(ev)) return;
   closeQuickAdd();
   renderAll();
   showToast('追加しました');
@@ -2095,6 +2258,191 @@ document.getElementById('modalDelete').addEventListener('click', () => {
 document.getElementById('modalOverlay').addEventListener('click', e => {
   if (e.target === document.getElementById('modalOverlay'))
     document.getElementById('modalOverlay').classList.remove('open');
+});
+
+// ==============================
+// MODAL EDIT
+// ==============================
+let editingEventId = null;
+
+function openModalEdit() {
+  const ev = getEffectiveEvents().find(e => e.id === currentModalEventId);
+  if (!ev) return;
+  editingEventId = ev.id;
+  document.getElementById('editTitle').value    = ev.title || '';
+  document.getElementById('editCategory').value = ev.category || 'イベント';
+  document.getElementById('editStart').value    = ev.startDate || '';
+  document.getElementById('editEnd').value      = ev.endDate || '';
+  document.getElementById('editRewards').value  = ev.rewards || '';
+  document.getElementById('editDesc').value     = ev.description || '';
+  document.getElementById('editUrl').value      = ev.url || '';
+  ['editStart','editEnd'].forEach(id => document.getElementById(id).classList.remove('error'));
+  document.getElementById('modalEditForm').classList.add('open');
+  setTimeout(() => document.getElementById('editTitle').focus(), 50);
+}
+
+function cancelModalEdit() {
+  document.getElementById('modalEditForm').classList.remove('open');
+}
+
+function saveModalEdit() {
+  const startVal = document.getElementById('editStart').value;
+  const endVal   = document.getElementById('editEnd').value;
+  const startEl  = document.getElementById('editStart');
+  const endEl    = document.getElementById('editEnd');
+  startEl.classList.remove('error');
+  endEl.classList.remove('error');
+
+  const title = document.getElementById('editTitle').value.trim();
+  if (!title) { showToast('タイトルは必須です', 'error'); return; }
+  if (!startVal) { startEl.classList.add('error'); showToast('開始日を入力してください', 'error'); return; }
+  if (!validateDate(startVal)) { startEl.classList.add('error'); showToast('開始日が無効です: ' + startVal, 'error'); return; }
+  if (endVal && !validateDate(endVal)) { endEl.classList.add('error'); showToast('終了日が無効です: ' + endVal, 'error'); return; }
+
+  const updated = {
+    title,
+    category:    document.getElementById('editCategory').value,
+    startDate:   startVal,
+    endDate:     endVal || '',
+    rewards:     document.getElementById('editRewards').value.trim() || null,
+    description: document.getElementById('editDesc').value.trim() || null,
+    url:         document.getElementById('editUrl').value.trim() || null,
+    banner:      false,
+  };
+
+  const isLocal = localEvents.some(e => e.id === editingEventId);
+  if (isLocal) {
+    const idx = localEvents.findIndex(e => e.id === editingEventId);
+    if (idx >= 0) { localEvents[idx] = { ...localEvents[idx], ...updated }; saveLocalData(); }
+  } else {
+    if (editingEventId) deletedIds.add(editingEventId);
+    updated.id = 'local_edit_' + Date.now();
+    localEvents.push(updated);
+    saveLocalData();
+  }
+
+  cancelModalEdit();
+  document.getElementById('modalOverlay').classList.remove('open');
+  renderAll();
+  showToast('保存しました');
+}
+
+document.getElementById('modalEdit').addEventListener('click', openModalEdit);
+document.getElementById('editSave').addEventListener('click', saveModalEdit);
+document.getElementById('editCancel').addEventListener('click', cancelModalEdit);
+
+// ==============================
+// REMINDERS (Notifications API)
+// ==============================
+function loadReminders() {
+  try { return JSON.parse(localStorage.getItem(LS_REMINDERS) || '[]'); } catch { return []; }
+}
+function saveReminders(list) {
+  localStorage.setItem(LS_REMINDERS, JSON.stringify(list));
+}
+
+function setReminder(ev, daysBefore) {
+  if (!ev.startDate) { showToast('開始日がないため通知できません', 'error'); return; }
+  const start = new Date(ev.startDate + 'T09:00:00');
+  start.setDate(start.getDate() - daysBefore);
+  const reminderAt = start.getTime();
+  if (reminderAt < Date.now()) { showToast('指定日時は過去です', 'error'); return; }
+  const list = loadReminders().filter(r => !(r.eventId === ev.id && r.daysBefore === daysBefore));
+  list.push({ eventId: ev.id, title: ev.title, startDate: ev.startDate, daysBefore, reminderAt });
+  saveReminders(list);
+  const label = daysBefore === 0 ? '当日' : daysBefore + '日前';
+  showToast('🔔 ' + label + 'に通知を設定しました');
+}
+
+async function checkReminders() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'denied') return;
+  const now = Date.now();
+  const list = loadReminders();
+  const fired = list.filter(r => r.reminderAt <= now);
+  const keep  = list.filter(r => r.reminderAt > now);
+  if (fired.length === 0) return;
+  if (Notification.permission !== 'granted') {
+    const result = await Notification.requestPermission();
+    if (result !== 'granted') return;
+  }
+  fired.forEach(r => {
+    new Notification('GameCal リマインド', {
+      body: r.title + (r.daysBefore > 0 ? '\n' + r.daysBefore + '日後に開始' : '\n本日開始！'),
+    });
+  });
+  saveReminders(keep);
+}
+
+document.getElementById('modalRemind').addEventListener('click', e => {
+  e.stopPropagation();
+  document.getElementById('remindPicker').classList.toggle('open');
+});
+
+document.querySelectorAll('.remind-option').forEach(opt => {
+  opt.addEventListener('click', e => {
+    e.stopPropagation();
+    const days = parseInt(opt.dataset.days, 10);
+    const ev = getEffectiveEvents().find(e => e.id === currentModalEventId);
+    if (!ev) return;
+    if (!('Notification' in window)) { showToast('このブラウザは通知非対応です', 'error'); return; }
+    if (Notification.permission === 'denied') { showToast('通知がブロックされています。ブラウザ設定を確認してください', 'error'); return; }
+    if (Notification.permission === 'granted') {
+      setReminder(ev, days);
+    } else {
+      Notification.requestPermission().then(perm => {
+        if (perm === 'granted') setReminder(ev, days);
+        else showToast('通知が拒否されました', 'error');
+      });
+    }
+    document.getElementById('remindPicker').classList.remove('open');
+  });
+});
+
+document.addEventListener('click', () => {
+  document.getElementById('remindPicker')?.classList.remove('open');
+  document.getElementById('webcalPopup')?.classList.remove('open');
+});
+
+// ==============================
+// WEBCAL登録ボタン
+// ==============================
+const BASE_URL = 'https://gamecl.vercel.app/api/cal';
+
+function buildWebcalUrl() {
+  const params = new URLSearchParams();
+  if (activeGame && activeGame !== 'ALL') params.set('games', activeGame);
+  const allCats = ['メンテ','アプデ','ガチャ','イベント','レイド','コラボ'];
+  const selected = allCats.filter(c => activeCategories.has(c));
+  if (selected.length > 0 && selected.length < allCats.length) params.set('cats', selected.join(','));
+  const query = params.toString();
+  return BASE_URL + (query ? '?' + query : '');
+}
+
+document.getElementById('webcalBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  const popup = document.getElementById('webcalPopup');
+  const isOpen = popup.classList.contains('open');
+  popup.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    const url = buildWebcalUrl();
+    const webcalUrl = url.replace('https://', 'webcal://');
+    document.getElementById('webcalUrlBox').textContent = webcalUrl;
+    document.getElementById('webcalGcalLink').href =
+      'https://www.google.com/calendar/render?cid=' + encodeURIComponent(webcalUrl);
+  }
+});
+
+document.getElementById('webcalUrlBox').addEventListener('click', e => {
+  e.stopPropagation();
+  const text = document.getElementById('webcalUrlBox').textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('URLをコピーしました'));
+});
+
+document.getElementById('webcalCopyBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  const text = document.getElementById('webcalUrlBox').textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('URLをコピーしました'));
 });
 
 // ==============================
@@ -2364,12 +2712,14 @@ const ALL_CATS = ['メンテ','アプデ','ガチャ','イベント','レイド'
 document.getElementById('filterAllOn').addEventListener('click', () => {
   ALL_CATS.forEach(cat => activeCategories.add(cat));
   document.querySelectorAll('.cat-toggle').forEach(btn => btn.classList.add('on'));
+  saveSettings();
   renderCurrentView(); renderUpcoming(); renderBanners(); clearPanel();
 });
 
 document.getElementById('filterAllOff').addEventListener('click', () => {
   activeCategories.clear();
   document.querySelectorAll('.cat-toggle').forEach(btn => btn.classList.remove('on'));
+  saveSettings();
   renderCurrentView(); renderUpcoming(); renderBanners(); clearPanel();
 });
 
@@ -2378,6 +2728,7 @@ document.querySelectorAll('.cat-toggle').forEach(btn => {
     const cat = btn.dataset.cat;
     if (activeCategories.has(cat)) { activeCategories.delete(cat); btn.classList.remove('on'); }
     else { activeCategories.add(cat); btn.classList.add('on'); }
+    saveSettings();
     renderCurrentView(); renderUpcoming(); renderBanners(); clearPanel();
   });
 });
@@ -2387,6 +2738,7 @@ document.querySelectorAll('.cat-toggle').forEach(btn => {
 // ==============================
 function switchView(mode) {
   viewMode = mode;
+  saveSettings();
   const calSection   = document.getElementById('calSection');
   const todaySection = document.getElementById('todaySection');
   const listSection  = document.getElementById('listSection');
@@ -2462,9 +2814,10 @@ document.getElementById('todayBtn').addEventListener('click', () => {
 // ==============================
 // TOAST
 // ==============================
-function showToast(msg) {
+function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
+  t.className = 'toast' + (type ? ' ' + type : '');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3500);
 }
@@ -2706,12 +3059,16 @@ function hideLoading() {
 }
 
 window.addEventListener('load', async () => {
+  loadSettings();
+  applySettingsToDOM();
   const safetyTimer = setTimeout(hideLoading, 3000);
   try {
     initZoneLayout();
     await loadEvents();
     await loadFeed();
-    setInterval(loadFeed, 60000); // Bフィードを1分ごとに自動更新
+    setInterval(loadFeed, 60000);
+    checkReminders();
+    setInterval(checkReminders, 60000);
   } catch(e) {
     console.error('init error:', e);
   }
