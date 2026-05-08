@@ -994,6 +994,10 @@ body.edit-mode .widget-mgr-panel.open { display:block; }
 .btn-gcal-reg:hover { background:rgba(66,133,244,0.2); border-color:rgba(66,133,244,0.5); }
 .webcal-copy-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--text-muted); padding:8px 12px; border-radius:7px; cursor:pointer; font-size:11px; font-family:'Noto Sans JP',sans-serif; transition:all 0.2s; }
 .webcal-copy-btn:hover { background:rgba(255,255,255,0.1); color:var(--text-secondary); }
+.webcal-cat-select { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
+.webcal-cat-btn { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); color:var(--text-muted); padding:4px 10px; border-radius:5px; cursor:pointer; font-size:10px; font-family:'Noto Sans JP',sans-serif; transition:all 0.15s; }
+.webcal-cat-btn.active { background:rgba(0,245,255,0.12); border-color:rgba(0,245,255,0.3); color:var(--accent-cyan); }
+.webcal-cat-btn:hover { background:rgba(255,255,255,0.08); color:var(--text-secondary); }
 
 @media (max-width:860px) {
   .zone-side { width:240px; }
@@ -1028,7 +1032,8 @@ body.edit-mode .widget-mgr-panel.open { display:block; }
       <div class="webcal-wrap">
         <button class="btn-webcal" id="webcalBtn">📅 カレンダー登録</button>
         <div class="webcal-popup" id="webcalPopup">
-          <div class="webcal-popup-title">▶ 現在のフィルターで登録</div>
+          <div class="webcal-popup-title">▶ 登録するカテゴリを選択</div>
+          <div class="webcal-cat-select" id="webcalCatSelect"></div>
           <div class="webcal-url-box" id="webcalUrlBox" title="クリックでコピー"></div>
           <div class="webcal-actions">
             <a class="btn-gcal-reg" id="webcalGcalLink" href="#" target="_blank">Googleカレンダーに追加</a>
@@ -2409,14 +2414,50 @@ document.addEventListener('click', () => {
 // ==============================
 const BASE_URL = 'https://gamecl.vercel.app/api/cal';
 
+// ポップアップ内の独立したカテゴリ選択（メインフィルターとは別）
+let webcalSelectedCats = new Set(['メンテ','アプデ','ガチャ','イベント','レイド','コラボ']);
+
+const WEBCAL_CAT_LABELS = [
+  {key:'メンテ',  label:'MAINT'},
+  {key:'アプデ',  label:'UPDATE'},
+  {key:'ガチャ',  label:'GACHA'},
+  {key:'イベント',label:'EVENT'},
+  {key:'レイド',  label:'RAID'},
+  {key:'コラボ',  label:'COLLAB'},
+];
+
 function buildWebcalUrl() {
   const params = new URLSearchParams();
   if (activeGame && activeGame !== 'ALL') params.set('games', activeGame);
-  const allCats = ['メンテ','アプデ','ガチャ','イベント','レイド','コラボ'];
-  const selected = allCats.filter(c => activeCategories.has(c));
+  const allCats = WEBCAL_CAT_LABELS.map(c => c.key);
+  const selected = allCats.filter(c => webcalSelectedCats.has(c));
   if (selected.length > 0 && selected.length < allCats.length) params.set('cats', selected.join(','));
   const query = params.toString();
   return BASE_URL + (query ? '?' + query : '');
+}
+
+function updateWebcalUrlBox() {
+  const webcalUrl = buildWebcalUrl().replace('https://', 'webcal://');
+  document.getElementById('webcalUrlBox').textContent = webcalUrl;
+  document.getElementById('webcalGcalLink').href =
+    'https://www.google.com/calendar/render?cid=' + encodeURIComponent(webcalUrl);
+}
+
+function initWebcalCatSelect() {
+  const container = document.getElementById('webcalCatSelect');
+  container.innerHTML = '';
+  WEBCAL_CAT_LABELS.forEach(({key, label}) => {
+    const btn = document.createElement('button');
+    btn.className = 'webcal-cat-btn' + (webcalSelectedCats.has(key) ? ' active' : '');
+    btn.textContent = label;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (webcalSelectedCats.has(key)) { webcalSelectedCats.delete(key); btn.classList.remove('active'); }
+      else                             { webcalSelectedCats.add(key);    btn.classList.add('active'); }
+      updateWebcalUrlBox();
+    });
+    container.appendChild(btn);
+  });
 }
 
 document.getElementById('webcalBtn').addEventListener('click', e => {
@@ -2425,11 +2466,9 @@ document.getElementById('webcalBtn').addEventListener('click', e => {
   const isOpen = popup.classList.contains('open');
   popup.classList.toggle('open', !isOpen);
   if (!isOpen) {
-    const url = buildWebcalUrl();
-    const webcalUrl = url.replace('https://', 'webcal://');
-    document.getElementById('webcalUrlBox').textContent = webcalUrl;
-    document.getElementById('webcalGcalLink').href =
-      'https://www.google.com/calendar/render?cid=' + encodeURIComponent(webcalUrl);
+    webcalSelectedCats = new Set(activeCategories); // メインフィルターの現在状態で初期化
+    initWebcalCatSelect();
+    updateWebcalUrlBox();
   }
 });
 
